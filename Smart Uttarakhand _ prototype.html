@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- saved from url=(0407)https://sdmntprindiasocentral.oaiusercontent.com/files/00000000-6b58-8211-a490-475754a799cc/raw?se=2026-11-12T13%3A58%3A56Z&sp=r&sv=2026-06-06&sr=b&scid=7f19175d-ba7a-4e30-b7e2-8eeb7342d24c&skoid=4aa315bb-5bf6-44d7-aaa9-381a9cb823c8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-12T00%3A56%3A48Z&ske=2026-11-13T00%3A56%3A48Z&sks=b&skv=2026-06-06&sig=Q0p4WEug7M2SmIU7vZ2WbeWFPjaQX8qn%2Buo8mnFwZx4%3D -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Uttarakhand | Citizen Help Portal</title>
+<style>
+:root{--navy:#102a43;--blue:#1769aa;--sky:#eaf4ff;--gold:#f5b942;--ink:#203040;--muted:#64748b;--paper:#f5f8fc;--white:#fff;--green:#14804a}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink)}
+header{background:linear-gradient(115deg,#102a43,#1769aa);color:white;padding:20px 5%;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:13px;background:#fff;color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:22px}
+.brand h1{font-size:20px;margin:0}.brand p{font-size:12px;margin:4px 0 0;color:#dbeafe}
+button,select,input{font:inherit}.lang{border:1px solid #b9d9f5;background:#ffffff18;color:white;border-radius:9px;padding:9px 12px}
+.hero{padding:42px 5% 34px;background:linear-gradient(135deg,#eaf4ff,#fff);text-align:center}.tag{display:inline-block;background:#fff0c9;color:#805600;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:bold}
+.hero h2{font-size:clamp(26px,5vw,40px);color:var(--navy);margin:16px 0 10px}.hero p{max-width:700px;margin:0 auto;color:var(--muted);line-height:1.6}
+.wrap{max-width:1100px;margin:26px auto;padding:0 18px}.searchbox{background:white;padding:20px;border-radius:16px;box-shadow:0 8px 28px #102a4310;display:flex;gap:10px;flex-wrap:wrap}
+.searchbox input{flex:1;min-width:190px;border:1px solid #d6e0ea;border-radius:10px;padding:13px}.primary{border:0;border-radius:10px;background:var(--blue);color:white;padding:13px 18px;font-weight:bold;cursor:pointer}.primary:hover{background:#0d548d}
+.section-title{font-size:22px;color:var(--navy);margin:30px 0 14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:white;border:1px solid #e2eaf2;border-radius:15px;padding:18px;box-shadow:0 5px 18px #102a4308}.emoji{font-size:28px}.card h3{margin:10px 0 7px;color:var(--navy);font-size:17px}.card p{margin:0;color:var(--muted);line-height:1.5;font-size:14px}
+.card button{margin-top:14px;background:var(--sky);border:0;color:var(--blue);padding:9px 12px;border-radius:8px;font-weight:bold;cursor:pointer}
+.panel{background:white;border:1px solid #e2eaf2;border-radius:15px;padding:20px;margin-top:15px}.panel label{display:block;font-weight:bold;margin:12px 0 6px}.panel select,.panel input{width:100%;padding:11px;border:1px solid #d6e0ea;border-radius:9px;background:white}.result{margin-top:14px;padding:13px;background:#eaf8f0;border-left:4px solid var(--green);border-radius:8px;display:none;line-height:1.5}
+.notice{margin:24px 0;padding:15px;border-radius:12px;background:#fff8e8;color:#76520a;font-size:13px;line-height:1.5}
+footer{text-align:center;padding:25px;color:#718096;font-size:12px}
+#answer{display:none;margin-top:15px;padding:14px;background:#f0f7ff;border-radius:10px;line-height:1.5}
+@media(max-width:600px){header{padding:16px 5%}.hero{padding:32px 5%}.searchbox{padding:14px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">UK</div><div><h1>Smart Uttarakhand</h1><p>Citizen Help Portal · Student Hackathon Prototype</p></div></div>
+  <select class="lang" id="language" aria-label="Language" onchange="changeLanguage()"><option value="en">English</option><option value="hi">हिन्दी</option></select>
+</header>
+<section class="hero">
+  <span class="tag" id="tag">ONE PLACE. SIMPLE GUIDANCE.</span>
+  <h2 id="heroTitle">Government services, made easier.</h2>
+  <p id="heroText">Find scheme information, understand basic eligibility and discover the next steps — in a simple, mobile-friendly demo.</p>
+</section>
+<main class="wrap">
+  <div class="searchbox">
+    <input id="query" placeholder="Search a scheme or service (e.g. student scholarship)" aria-label="Search schemes">
+    <button class="primary" onclick="searchScheme()" id="searchBtn">Search</button>
+  </div>
+  <div id="answer"></div>
+  <h2 class="section-title" id="servicesTitle">Explore services</h2>
+  <div class="grid">
+    <article class="card"><div class="emoji">🎓</div><h3 id="c1t">Student scholarships</h3><p id="c1p">Learn where to check scholarship notices and required documents.</p><button onclick="showInfo('scholarship')" id="more1">View guidance</button></article>
+    <article class="card"><div class="emoji">🌾</div><h3 id="c2t">Farmer support</h3><p id="c2p">Find general guidance for agriculture-related services.</p><button onclick="showInfo('farmer')" id="more2">View guidance</button></article>
+    <article class="card"><div class="emoji">🧾</div><h3 id="c3t">Certificates</h3><p id="c3p">Understand the usual process for income, caste and residence certificates.</p><button onclick="showInfo('certificate')" id="more3">View guidance</button></article>
+    <article class="card"><div class="emoji">🏥</div><h3 id="c4t">Health services</h3><p id="c4p">Find starting points for public health information and services.</p><button onclick="showInfo('health')" id="more4">View guidance</button></article>
+  </div>
+  <h2 class="section-title" id="eligTitle">Basic eligibility guide</h2>
+  <section class="panel">
+    <p id="eligIntro">Choose a topic to see a simple checklist. This is general guidance, not an official eligibility decision.</p>
+    <label for="topic" id="topicLabel">What do you need?</label>
+    <select id="topic"><option value="student">Student scholarship</option><option value="income">Income certificate</option><option value="residence">Residence certificate</option></select>
+    <label for="district" id="districtLabel">District</label>
+    <input id="district" placeholder="e.g. Dehradun">
+    <button class="primary" style="margin-top:14px" onclick="checkGuide()" id="checkBtn">Show checklist</button>
+    <div class="result" id="result"></div>
+  </section>
+  <div class="notice" id="notice"><b>Prototype notice:</b> This is a student-made concept demonstration. It does not collect personal data, submit applications, verify eligibility or represent an official Government of Uttarakhand website. Always confirm current rules and apply through official government portals.</div>
+</main>
+<footer>Smart Uttarakhand · Hackathon concept prototype · Not an official government portal</footer>
+<script>
+const info={
+ scholarship:{en:"Scholarship guidance: check the latest notice from your school/college and the relevant official scholarship portal. Commonly requested documents may include student ID, marksheet, bank details and income certificate. Requirements vary by scheme.",hi:"छात्रवृत्ति: अपने स्कूल/कॉलेज की सूचना और संबंधित आधिकारिक छात्रवृत्ति पोर्टल देखें। आम तौर पर छात्र पहचान पत्र, अंकपत्र, बैंक विवरण और आय प्रमाणपत्र मांगे जा सकते हैं। दस्तावेज़ योजना के अनुसार बदलते हैं।"},
+ farmer:{en:"Farmer support: contact your local agriculture office or an official government service centre to confirm current schemes, eligibility and documents. Do not share OTPs or bank PINs with anyone.",hi:"किसान सहायता: मौजूदा योजनाओं, पात्रता और दस्तावेज़ों की पुष्टि के लिए स्थानीय कृषि कार्यालय या आधिकारिक सेवा केंद्र से संपर्क करें। किसी को OTP या बैंक PIN न बताएं।"},
+ certificate:{en:"Certificates: identify the correct certificate, check the current document list on the official state service portal, and use the authorized application channel. Keep your acknowledgement number for tracking.",hi:"प्रमाणपत्र: पहले सही प्रमाणपत्र चुनें, आधिकारिक राज्य सेवा पोर्टल पर दस्तावेज़ों की सूची देखें और अधिकृत माध्यम से आवेदन करें। आवेदन संख्या सुरक्षित रखें।"},
+ health:{en:"Health services: for scheme coverage, facilities and current procedures, check official health department information or visit an authorized health centre. For emergencies, contact local emergency services.",hi:"स्वास्थ्य सेवाएं: योजना, अस्पताल और प्रक्रिया की जानकारी के लिए आधिकारिक स्वास्थ्य विभाग या अधिकृत स्वास्थ्य केंद्र से संपर्क करें। आपात स्थिति में स्थानीय आपातकालीन सेवा लें।"}
+};
+function showInfo(k){const lang=document.getElementById('language').value;const a=document.getElementById('answer');a.style.display='block';a.textContent=info[k][lang];a.scrollIntoView({behavior:'smooth',block:'nearest'});}
+function searchScheme(){const q=document.getElementById('query').value.toLowerCase();let k=q.includes('scholar')||q.includes('student')?'scholarship':q.includes('farmer')||q.includes('किसान')?'farmer':q.includes('certificate')||q.includes('प्रमाण')?'certificate':q.includes('health')||q.includes('स्वास्थ्य')?'health':null;if(k){showInfo(k)}else{const a=document.getElementById('answer');a.style.display='block';a.textContent=document.getElementById('language').value==='hi'?'इस डेमो में छात्रवृत्ति, किसान सहायता, प्रमाणपत्र या स्वास्थ्य सेवा खोजें। नवीनतम जानकारी आधिकारिक पोर्टल पर जांचें।':'In this demo, try scholarship, farmer support, certificates or health services. Verify current information on official portals.';}}
+function checkGuide(){const lang=document.getElementById('language').value;const topic=document.getElementById('topic').value;const district=document.getElementById('district').value|| (lang==='hi'?'अपना जिला':'your district');const en={student:'Checklist: confirm the scheme and deadline with your institution; check class/course and income criteria; prepare marksheet, ID, bank details and any certificate specifically requested.',income:'Checklist: check the current official document list; details commonly requested may include identity/address proof and income-related evidence. Apply through an authorized channel.',residence:'Checklist: check the current official document list; proof of residence/identity may be requested. The competent authority and requirements depend on the service.'};const hi={student:'सूची: कॉलेज से योजना और अंतिम तारीख पक्की करें; कक्षा/कोर्स और आय संबंधी शर्तें देखें; अंकपत्र, पहचान पत्र, बैंक विवरण और मांगे गए प्रमाणपत्र तैयार रखें।',income:'सूची: आधिकारिक पोर्टल पर वर्तमान दस्तावेज़ सूची देखें; पहचान/पते का प्रमाण और आय से जुड़े दस्तावेज़ मांगे जा सकते हैं। अधिकृत माध्यम से आवेदन करें।',residence:'सूची: आधिकारिक पोर्टल पर वर्तमान दस्तावेज़ सूची देखें; निवास और पहचान का प्रमाण मांगा जा सकता है। नियम सेवा के अनुसार बदलते हैं।'};const r=document.getElementById('result');r.style.display='block';r.textContent=(lang==='hi'?'जिला: ':'District: ')+district+' — '+(lang==='hi'?hi:en)[topic];}
+function changeLanguage(){const hi=document.getElementById('language').value==='hi';const t={tag:['एक जगह, आसान मार्गदर्शन।','ONE PLACE. SIMPLE GUIDANCE.'],heroTitle:['सरकारी सेवाएं, अब आसान।','Government services, made easier.'],heroText:['योजनाओं की जानकारी पाएं, बुनियादी पात्रता समझें और अगले कदम जानें।','Find scheme information, understand basic eligibility and discover the next steps — in a simple, mobile-friendly demo.'],searchBtn:['खोजें','Search'],servicesTitle:['सेवाएं देखें','Explore services'],c1t:['छात्रवृत्ति','Student scholarships'],c1p:['छात्रवृत्ति और जरूरी दस्तावेज़ों की जानकारी देखें।','Learn where to check scholarship notices and required documents.'],c2t:['किसान सहायता','Farmer support'],c2p:['कृषि सेवाओं के लिए सामान्य मार्गदर्शन पाएं।','Find general guidance for agriculture-related services.'],c3t:['प्रमाणपत्र','Certificates'],c3p:['आय, जाति और निवास प्रमाणपत्र की सामान्य प्रक्रिया समझें।','Understand the usual process for income, caste and residence certificates.'],c4t:['स्वास्थ्य सेवाएं','Health services'],c4p:['सरकारी स्वास्थ्य सेवाओं की जानकारी पाने के शुरुआती तरीके।','Find starting points for public health information and services.'],eligTitle:['बुनियादी पात्रता मार्गदर्शिका','Basic eligibility guide'],eligIntro:['विषय चुनें और सामान्य चेकलिस्ट देखें। यह आधिकारिक पात्रता निर्णय नहीं है।','Choose a topic to see a simple checklist. This is general guidance, not an official eligibility decision.'],topicLabel:['आपको क्या चाहिए?','What do you need?'],districtLabel:['जिला','District'],checkBtn:['चेकलिस्ट दिखाएं','Show checklist']};for(const id in t)document.getElementById(id).textContent=t[id][hi?0:1];document.getElementById('query').placeholder=hi?'योजना या सेवा खोजें':'Search a scheme or service (e.g. student scholarship)';document.getElementById('district').placeholder=hi?'जैसे देहरादून':'e.g. Dehradun';document.getElementById('notice').innerHTML=hi?'<b>प्रोटोटाइप सूचना:</b> यह विद्यार्थियों द्वारा बनाया गया डेमो है। यह व्यक्तिगत डेटा नहीं लेता, आवेदन जमा नहीं करता और उत्तराखंड सरकार की आधिकारिक वेबसाइट नहीं है। नवीनतम नियम आधिकारिक पोर्टल पर जांचें।':'<b>Prototype notice:</b> This is a student-made concept demonstration. It does not collect personal data, submit applications, verify eligibility or represent an official Government of Uttarakhand website. Always confirm current rules and apply through official government portals.';document.getElementById('answer').style.display='none';document.getElementById('result').style.display='none';}
+</script>
+</body></html>
